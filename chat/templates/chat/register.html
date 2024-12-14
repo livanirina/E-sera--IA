@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription</title>
+    <style>
+        /* Style global */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7f8fc;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* Navbar */
+        nav {
+            background-color: #4a90e2;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: none;
+            border: none;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #f8c02e;
+        }
+
+        /* Form container */
+        .form-container {
+            max-width: 450px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #4a90e2;
+        }
+
+        label {
+            font-size: 1.1rem;
+            color: #333;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            font-size: 1.1rem;
+            background-color: #5c6bc0;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #4e5c9a;
+        }
+
+        /* Remove the default Django error messages */
+        .form-error {
+            display: none;
+        }
+
+        /* Responsive layout */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 15px;
+            }
+
+            nav a {
+                margin: 10px 0;
+            }
+
+            .form-container {
+                width: 90%;
+                margin: 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">E-sera@IA</a>
+        <div>
+            <a href="/login">Connexion</a>
+            <a href="/register">S'inscrire</a>
+        </div>
+    </nav>
+    
+    <div class="form-container">
+        <h1>S'inscrire</h1>
+        <form method="POST">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="username">Nom d'utilisateur</label>
+                {{ form.username }}
+            </div>
+            
+            
+            <div class="form-group">
+                <label for="password1">Mot de passe</label>
+                {{ form.password1 }}
+            </div>
+            
+            <div class="form-group">
+                <label for="password2">Confirmer le mot de passe</label>
+                {{ form.password2 }}
+            </div>
+            
+            <button type="submit">S'inscrire</button>
+        </form>
+    </div>
+</body>
+</html>
